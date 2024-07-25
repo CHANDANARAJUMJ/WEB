@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store and Display Information</title>
+</head>
+<body>
+    <h1>Enter Information</h1>
+    <form method="post" action="">
+        <label for="info">Enter some text:</label>
+        <input type="text" id="info" name="info" required>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $info = htmlspecialchars($_POST['info']);
+
+        // Display the information
+        echo "<h2>Submitted Information</h2>";
+        echo "<p>$info</p>";
+
+        // Store the information into a text file
+        $file = 'submitted_info.txt';
+        file_put_contents($file, $info . PHP_EOL, FILE_APPEND);
+
+        echo "<p>Information stored successfully.</p>";
+    }
+    ?>
+</body>
+</html>

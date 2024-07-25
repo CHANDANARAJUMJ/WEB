@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>User Information Form</title>
+  <script>
+    function validateForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var mobile = document.getElementById("mobile").value;
+      var gender = document.querySelector('input[name="gender"]:checked');
+      var color = document.getElementById("color").value;
+
+      if (!name || !email || !mobile || !gender || !color) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      var result = "Name: " + name + "\n" +
+                   "Email: " + email + "\n" +
+                   "Mobile No: " + mobile + "\n" +
+                   "Gender: " + gender.value + "\n" +
+                   "Favorite Color: " + color;
+
+      document.getElementById("result").value = result;
+    }
+  </script>
+</head>
+<body>
+  <h1>User Information Form</h1>
+  <form>
+    <label>Name:</label>
+    <input type="text" id="name"><br><br>
+    
+    <label>Email:</label>
+    <input type="text" id="email"><br><br>
+    
+    <label>Mobile No:</label>
+    <input type="text" id="mobile"><br><br>
+    
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female<br><br>
+    
+    <label>Favorite Color:</label>
+    <input type="text" id="color"><br><br>
+    
+    <button type="button" onclick="validateForm()">Submit</button>
+  </form>
+  
+  <h2>Form Data</h2>
+  <textarea id="result" rows="6" cols="50" readonly></textarea>
+</body>
+</html>

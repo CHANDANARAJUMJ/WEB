@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Simple Calculator</title>
+</head>
+<body>
+  <h1>Simple Calculator</h1>
+  <form name="calculator">
+    <input type="text" name="num1" placeholder="Enter first number"><br>
+    <input type="text" name="num2" placeholder="Enter second number"><br>
+    <select name="operation">
+      <option value="add">Addition</option>
+      <option value="subtract">Subtraction</option>
+      <option value="multiply">Multiplication</option>
+      <option value="divide">Division</option>
+    </select><br><br>
+    <button type="button" onclick="calculate()">Calculate</button>
+  </form>
+  <p id="result"></p>
+
+  <script>
+    function calculate() {
+      var num1 = parseFloat(document.calculator.num1.value);
+      var num2 = parseFloat(document.calculator.num2.value);
+      var operation = document.calculator.operation.value;
+      var result;
+
+      if (operation == "add") {
+        result = num1 + num2;
+      } else if (operation == "subtract") {
+        result = num1 - num2;
+      } else if (operation == "multiply") {
+        result = num1 * num2;
+      } else if (operation == "divide") {
+        result = num1 / num2;
+      }
+
+      document.getElementById("result").innerText = "Result: " + result;
+    }
+  </script>
+</body>
+</html>

@@ -2,32 +2,66 @@
 <html>
 <head>
  <title>Login</title>
+ <style>
+ input, button {
+ width: 80%;
+ padding: 10px;
+ margin: 10px 0;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ font-size: 16px;
+ }
+ button {
+ background-color: lightgreen;
+ cursor: pointer;
+ }
+ button:hover {
+ background-color: #45a049;
+ }
+ .form-container {
+ width: 300px;
+ margin: auto;
+ background: #f0f0f0;
+ padding: 20px;
+ border-radius: 8px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ text-align: center;
+ }
+ h1 {
+ font-size: 24px;
+ }
+ </style>
 </head>
 <body>
+ <div class="form-container">
  <h1>Login</h1>
  <form method="POST">
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username" required>
-  <br>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required>
-  <br>
-  <button type="submit">Login</button>
+ <label for="username">Username:</label>
+ <input type="text" id="username" name="username" required>
+ <label for="password">Password:</label>
+ <input type="password" id="password" name="password" required>
+ <button type="submit">Login</button>
  </form>
-
+ <p>
  <?php
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     $uname = $_POST["username"];
-     $pass = $_POST["password"];
-     $file = fopen("info.txt", "r");
-     $content = fgets($file);
-     fclose($file);
-     if ($content == $uname . ":" . $pass . "\n") {
-         echo "Access granted";
-     } else {
-         echo "Incorrect details";
-     }
+ $uname = $_POST["username"];
+ $pass = $_POST["password"];
+ $file = fopen("info.txt", "r");
+ $content = fgets($file);
+ if ($content == $uname . ":" . $pass) {
+ echo "Access granted";
+ } else {
+ echo "Incorrect details";
+ }
  }
  ?>
+ </p>
+ </div>
 </body>
 </html>
+
+
+
+info.txt
+jahnavi:12345
